@@ -1,3 +1,7 @@
+// Ex 5-1
+// Fix getint to push '+' or '-' not immediately
+// followed by a digit back onto the stack.
+
 #include <ctype.h>
 #include <stdio.h>
 
@@ -35,7 +39,7 @@ int getint(int *pn)
 	sign = (c == '-') ? -1 : 1;
 	
 	if (c == '+' || c == '-')
-		c = getch();
+		ungetch(c);
 	
 	for (*pn = 0; isdigit(c); c = getch())
 		*pn = 10 * *pn + (c - '0');
